@@ -5,7 +5,7 @@ void setup()
 	bob = new Particle[1000];
 	for (int i = 0; i < bob.length; i++)
 	{
-		bob[i] = new NormalParticle();
+		bob[i] = new Particle();
 	}
 	bob[0] = new OddballParticle();
 	bob[1] = new JumboParticle();
@@ -20,16 +20,11 @@ void draw()
 	}
 }
 
-interface Particle
-{
-	public void move();
-  	public void show();
-}
 
-class NormalParticle implements Particle{
+class Particle{
 	int col;
 	double myX,myY,angle,speed;
-	NormalParticle(){
+	Particle(){
 		angle = Math.random() * (Math.PI * 2);	
 		col = (int)random(150,255);
 		myX = width/2;
@@ -54,7 +49,7 @@ class NormalParticle implements Particle{
 }
 
 
-class OddballParticle implements Particle{
+class OddballParticle extends Particle{
 	int col;
 	double x, y, angle, speed;
 	OddballParticle(){
@@ -82,7 +77,7 @@ class OddballParticle implements Particle{
 	}
 }
 
-class JumboParticle extends NormalParticle{
+class JumboParticle extends Particle{
 	void show(){
 
 		fill(random(0,255),random(0,255),random(0,255));
